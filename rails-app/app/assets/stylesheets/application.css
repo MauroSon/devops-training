@@ -30,7 +30,7 @@ html {
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
-  background: linear-gradient(160deg, #eef0fb 0%, #f6f4ff 45%, #fdf3f7 100%);
+  background: #000000;
   background-attachment: fixed;
   color: var(--text);
   min-height: 100vh;
