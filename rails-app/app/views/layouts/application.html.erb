@@ -9,6 +9,20 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script>
+      // Aplica o tema antes da primeira pintura para evitar "flash"
+      (function () {
+        var saved = null;
+        try {
+          saved = localStorage.getItem("theme");
+        } catch (e) {}
+        var dark = saved
+          ? saved === "dark"
+          : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
+      })();
+    </script>
+
     <%= yield :head %>
 
     <link rel="icon" href="/icon.png" type="image/png">
@@ -21,6 +35,17 @@
 
   <body>
     <main class="container">
+      <button
+        type="button"
+        class="theme-toggle"
+        data-controller="theme"
+        data-action="theme#toggle"
+        aria-label="Alternar tema claro/escuro"
+        title="Alternar tema"
+      >
+        <span class="theme-toggle-moon" aria-hidden="true">🌙</span>
+        <span class="theme-toggle-sun" aria-hidden="true">☀️</span>
+      </button>
       <% if notice %>
         <p class="notice"><%= notice %></p>
       <% end %>
